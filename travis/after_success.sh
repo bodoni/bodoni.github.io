@@ -2,8 +2,7 @@
 
 set -ev
 
-env
-if [ ! -z "${TRAVIS_RUST_VERSION}" ] && [ "${TRAVIS_RUST_VERSION}" != "nightly" ]; then
+if [ ! -z "${RUST_DOC_VERSION}" ] && [ "${RUST_DOC_VERSION}" != "${TRAVIS_RUST_VERSION}" ]; then
   exit
 fi
 
