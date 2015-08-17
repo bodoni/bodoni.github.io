@@ -2,7 +2,7 @@
 
 set -ev
 
-if [ ! -z "${RUST_DOC_VERSION}" ] && [ "${RUST_DOC_VERSION}" != "${TRAVIS_RUST_VERSION}" ]; then
+if [ ! -z "${RUSTDOC_VERSION}" ] && [ "${RUSTDOC_VERSION}" != "${TRAVIS_RUST_VERSION}" ]; then
   exit
 fi
 
