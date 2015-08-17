@@ -2,6 +2,11 @@
 
 set -ev
 
+env
+if [ ! -z "${TRAVIS_RUST_VERSION}" ] && [ "${TRAVIS_RUST_VERSION}" != "nightly" ]; then
+  exit
+fi
+
 git config user.name "Travis CI"
 git config user.email ""
 
