@@ -2,6 +2,10 @@
 
 set -ev
 
+[ ! -z "${RUSTDOC_VERSION}" ] && [ "${TRAVIS_RUST_VERSION}" != "${RUSTDOC_VERSION}" ] && exit
+[ -z "${RUSTDOC_VERSION}" ] && [ "${TRAVIS_RUST_VERSION}" != "nightly" ] && exit
+[ "${TRAVIS_BRANCH}" != "master" ] && exit
+
 git config user.name "Travis CI"
 git config user.email ""
 
