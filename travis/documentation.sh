@@ -2,8 +2,12 @@
 
 set -ev
 
-[ ! -z "${RUSTDOC_VERSION}" ] && [ "${TRAVIS_RUST_VERSION}" != "${RUSTDOC_VERSION}" ] && exit
-[ -z "${RUSTDOC_VERSION}" ] && [ "${TRAVIS_RUST_VERSION}" != "nightly" ] && exit
+if [ -z "${RUSTDOC_VERSION}" ]; then
+  RUSTDOC_VERSION=nightly
+fi
+
+[ "${TRAVIS_RUST_VERSION}" != "${RUSTDOC_VERSION}" ] && exit
+[ "${TRAVIS_PULL_REQUEST}" != "false" ] && exit
 [ "${TRAVIS_BRANCH}" != "master" ] && exit
 
 git config user.name "Travis CI"
